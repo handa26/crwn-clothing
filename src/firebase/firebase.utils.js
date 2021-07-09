@@ -31,7 +31,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
     } catch (error) {
-      console.log('Error when storing user', error.message);
+      console.log("Error when storing user", error.message);
     }
   }
 
@@ -40,7 +40,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 firebase.initializeApp(config);
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch();
@@ -62,7 +65,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       id: doc.id,
       title,
       items,
-    }
+    };
   });
 
   return transformedCollection.reduce((accumulator, collection) => {
@@ -72,11 +75,20 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {});
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
