@@ -24,7 +24,23 @@ this will create build folder for deployment itself.
 
 ## Screenshoots
 
-The screenshots not yet available because the project is on progress :)
+<div align="center">
+  Front page
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-front.png">
+
+  Signin & signup page
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-auth.png">
+
+  Products
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-items-preview.png">
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-items.png">
+
+  Checkout
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-checkout.png">
+
+  Payment
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-payment.png>
+</div>
 
 ## Related projects
 
