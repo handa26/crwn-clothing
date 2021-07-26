@@ -39,7 +39,7 @@ this will create build folder for deployment itself.
   <img width="100%" src="./client/src/assets/demo/crwn-clothing-checkout.png">
 
   Payment
-  <img width="100%" src="./client/src/assets/demo/crwn-clothing-payment.png>
+  <img width="100%" src="./client/src/assets/demo/crwn-clothing-payment.png">
 </div>
 
 ## Related projects
