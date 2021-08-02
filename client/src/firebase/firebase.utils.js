@@ -12,6 +12,11 @@ const config = {
   measurementId: "G-85TV07YDWC",
 };
 
+/* This function takes user info
+ * when login/signup and proceed to
+ * firestore database to store the 
+ * user info.
+ */
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
@@ -40,6 +45,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 firebase.initializeApp(config);
 
+/* This function will make collection
+ * and docs/objects to store with into
+ * firestore database.
+ */
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
