@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const compression = require("compression");
+const enforce = require("express-sslify");
 const path = require("path");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
@@ -23,6 +24,10 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
+
+app.get("/service-worker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
+});
 
 app.post("/payment", (req, res) => {
   const body = {
