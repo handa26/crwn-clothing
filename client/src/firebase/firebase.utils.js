@@ -12,6 +12,8 @@ const config = {
   measurementId: "G-85TV07YDWC",
 };
 
+firebase.initializeApp(config);
+
 /* This function takes user info
  * when login/signup and proceed to
  * firestore database to store the 
@@ -43,7 +45,24 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-firebase.initializeApp(config);
+/* This function takes existing user id
+ * when login/signup and proceed to
+ * firestore database to store the 
+ * user id along with cart items.
+ */
+export const getUserCartRef = async (userId) => {
+  const cartsRef = firestore.collection("carts").where("userId", "==", userId);
+
+  const snapShot = await cartsRef.get();
+
+  if (snapShot.empty) {
+    const cartDocRef = firestore.collection("carts").doc();
+    await cartDocRef.set({ userId, cartItems: [] });
+    return cartDocRef;
+  } else {
+    return snapShot.docs[0].ref;
+  }
+};
 
 /* This function will make collection
  * and docs/objects to store with into
