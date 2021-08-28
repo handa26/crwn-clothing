@@ -13,7 +13,7 @@ npm install
 
 After install all dependecies, start developing by typing this:
 ```bash
-npm start
+npm run dev
 ```
 
 If you ready for deployment, budling your entire project with:
